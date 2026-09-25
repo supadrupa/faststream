@@ -48,4 +48,4 @@ allowing per‑message `ack()` inside a batch.
 {! docs_src/nats/js/pull_sub_batch_example.py !}
 ```
 
-So, your subject will be processed much faster, without blocking for each message processing. However, if your subject has fewer than `#!python 10` messages, your request to **NATS** will be blocked for `timeout` (5 seconds by default) while trying to collect the required number of messages. Therefore, you should choose `batch_size` and `timeout` accurately to optimize your consumer efficiency.
+So, your subject will be processed much faster, without blocking for each message processing. However, with `batch=True`, if fewer than `#!python 10` messages arrive, **FastStream** waits up to `timeout` (5 seconds by default) to collect a full batch, then passes the partial batch to your handler if it is nonempty. Therefore, you should choose `batch_size` and `timeout` accurately to optimize your consumer efficiency.
