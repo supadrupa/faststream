@@ -27,7 +27,7 @@ In fact, the **JetStream** extension is the same as *NATS*, with the addition of
 However, the **JetStream** layer has many possibilities for configuration, from the policy of deleting old messages to the maximum stored messages number limit. You can find out more about all **JetStream** features in the official [documentation](https://docs.nats.io/using-nats/developer/develop_jetstream){.external-link target="_blank"}.
 
 !!! tip ""
-    If you have worked with other message brokers, then you should know that the logic of **JS** is closer to **Kafka** than to **RabbitMQ**: messages, after confirmation, are not deleted from the queue but remain there until the queue is full, and it will start deleting old messages (or in accordance with other logic that you can configure yourself).
+    If you have worked with other message brokers, then you should know that the logic of **JetStream** is closer to **Kafka** than to **RabbitMQ**: messages, after confirmation, are not deleted from the queue but remain there until the queue is full, and it will start deleting old messages (or in accordance with other logic that you can configure yourself).
 
     When connecting a `consumer` (and, especially, when reconnecting), you must determine for yourself according to what logic it will consume messages: from the subject beginning, starting with some message, starting from some time, only new ones, etc. Don't be surprised if a connection is restored, and your `consumer` starts to process all messages received earlier again - you haven't defined the rule.
 
